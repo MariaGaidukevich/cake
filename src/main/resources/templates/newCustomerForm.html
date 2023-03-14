@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Форма клиента</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body class="p-5 mb-2 bg-light text-dark">
+<h1>Мы не нашли вас в списке постоянных клиентов, для заказа оставьте краткие сведения о себе:</h1>
+
+<div class="container-sm">
+  <form th:method="POST" th:action="@{/customer/new}" th:object="${customer}">
+    <label class="col-sm-3 col-form-label" for="name">Полное имя:
+      <input class="form-control" type="text" th:field="*{name}" id="name">
+    </label>
+    <br/>
+    <label class="col-sm-3 col-form-label" for="phone">Телефон:
+      <input class="form-control" type="text" th:field="*{phoneNumber}" id="phone">
+    </label>
+    <br/>
+    <label class="col-sm-3 col-form-label" for="email">Email:
+      <input class="form-control" type="text" th:field="*{email}" id="email">
+    </label>
+    <br/>
+    <br/>
+    <input class="btn btn-primary mb0-m" type="submit" value="Перейти к конструктору торта"/>
+  </form>
+</div>
+</body>
+</html>

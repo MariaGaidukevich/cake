@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ингредиенты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="p-5 mb-2 bg-light text-dark">
+<h3>База данных ингредиентов</h3>
+<form action="/ingredients/new">
+    <button class="btn btn-primary">Создать новый ингредиент</button>
+
+</form>
+<table class="table table-primary table-striped">
+    <thead>
+    <tr class="table-dark">
+        <th>Id Ингредиента</th>
+        <th>Название ингредиента</th>
+        <th>Тип ингредиента</th>
+        <th>Стоимость</th>
+        <th>Статус</th>
+        <th>Изменение</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ingredient:${ingredients}">
+        <td th:text="${ingredient.getId()}">id</td>
+        <td th:text="${ingredient.getName()}">name</td>
+        <td th:text="${ingredient.getIngredientType().showType()}">type</td>
+        <td th:text="${ingredient.getPrice()}">price</td>
+        <td th:text="${ingredient.getIngredientStatus().showStatus()}">status</td>
+        <td>
+            <form th:method="GET" th:action="@{/ingredients/{id}(id=${ingredient.getId()})}">
+                <input class="btn btn-outline-primary" type="submit" value="Изменить"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

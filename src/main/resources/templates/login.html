@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Вход в защищенную область</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="p-3 mb-2 bg-light text-dark">
+<div class="container-sm" style="text-align: center;">
+Вход в систему:<br/><br/>
+  <div th:if="${param.error}">
+    Неверное имя пользователя или пароль!
+  </div>
+  <div th:if="${param.logout}">
+    Вы не в системе!
+  </div>
+  <form th:action="@{/login}" method="POST">
+    <div><label> Имя пользователя : <input type="text" name="username"/> </label><br/><br/></div>
+    <div><label> Пароль: <input type="password" name="password"/> </label><br/><br/></div>
+    <div><input type="submit"  class="btn btn-primary mb0-m" value="Войти"/></div>
+  </form>
+</div>
+
+
+</body>
+</html>
